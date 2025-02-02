@@ -20,15 +20,15 @@ We also present results on anomaly detection using real-world data, showcasing F
 Our code requires Tensor Toolbox (available at https://gitlab.com/tensors/tensor_toolbox).
 
 ## Datasets (INCOMPLETE)
-We provide the synthetic datasets used in our experiments at [here](https://drive.google.com/open?id=1gt_L-RK1cXc8w1OCbU7q5pkabpA6L9JD&usp=drive_copy).
-The real-world datasets are available at [Cityscapes](https://www.cityscapes-dataset.com/), [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/), [DF2K](https://www.kaggle.com/datasets/thaihoa1476050/df2k-ost), [RiceLeaf](https://www.kaggle.com/datasets/shayanriyaz/riceleafs), and [Bird](https://www.kaggle.com/datasets/akash2907/bird-species-classification).
+The real-world datasets are available at ...
 
-| **Dataset** | **Type** | **# of Images** | **Size** |
-| :----------- | :----------- | -----------: | -----------: |
-| $S_{n=8,\cdots,15}$ | Synthetic | 1K | $2^n \times 2^n$ |
-| Cityscapes | Real-world | 5K | $2048 \times 1024$ |
-| ADE20K | Real-world | 20K | $2048 \times 2048$ |
-| DF2K | Real-world | 3K | $2040 \times 1536$ |
-| RiceLeaf | Real-world | 3.3K | $3120 \times 3120$ |
-| Bird | Real-world | 306 | $6000 \times 4000$ |
+| Dataset      | Stream Type     | Tensor Size               | Matrix Size         |
+|-------------|---------------|--------------------------|---------------------|
+| **ML-100K**  | Single-Tensor  | $1682 \times 943 \times c$   | $1682 \times 19$   |
+| **ML-1M**    | Single-Tensor  | $3706 \times 6040 \times c$  | $3706 \times 20$   |
+| **Amazon**   | Single-Tensor  | $1583 \times 1659 \times c$  | $1583 \times 53$   |
+| **Stock-US** | Matrix-Tensor  | $501 \times 88 \times 3651$  | $3651 \times 10$   |
+| **Stock-JPN** | Matrix-Tensor  | $a \times b \times c$       | $c \times d$       |
+| **Stock-KR**  | Matrix-Tensor  | $a \times b \times c$       | $c \times d$       |
+
 
