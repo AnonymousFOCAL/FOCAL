@@ -20,15 +20,14 @@ We also present results on anomaly detection using real-world data, showcasing F
 Our code requires Tensor Toolbox (available at https://gitlab.com/tensors/tensor_toolbox).
 
 ## Datasets (INCOMPLETE)
-The real-world datasets are available at ...
+The real-world datasets are available at [ML-100K](https://grouplens.org/datasets/movielens/100k/), [Amazon](https://www.kaggle.com/datasets/deovcs/amazon-dataset), [Stock-US](), [Stock-JPN](), and [Stock-CHN]().
 
 | Dataset      | Stream Type     | Tensor Size               | Matrix Size         |
 |-------------|---------------|--------------------------|---------------------|
-| **ML-100K**  | Single-Tensor  | $1682 \times 943 \times c$   | $1682 \times 19$   |
-| **ML-1M**    | Single-Tensor  | $3706 \times 6040 \times c$  | $3706 \times 20$   |
-| **Amazon**   | Single-Tensor  | $1583 \times 1659 \times c$  | $1583 \times 53$   |
+| **ML-100K**  | Single-Tensor  | $1682 \times 943 \times 200$   | $1682 \times 19$   |
+| **Amazon**   | Single-Tensor  | $901 \times 1720 \times 200$  | $901 \times 170$   |
 | **Stock-US** | Matrix-Tensor  | $501 \times 88 \times 3651$  | $3651 \times 10$   |
-| **Stock-JPN** | Matrix-Tensor  | $a \times b \times c$       | $c \times d$       |
-| **Stock-KR**  | Matrix-Tensor  | $a \times b \times c$       | $c \times d$       |
+| **Stock-JPN** | Matrix-Tensor  | $300 \times 88 \times 3856$       | $3856 \times 10$       |
+| **Stock-KR**  | Matrix-Tensor  | $1471 \times 88 \times 1170$       | $1170 \times 10$       |
 
 
