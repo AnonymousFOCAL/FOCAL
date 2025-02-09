@@ -19,8 +19,8 @@ We also present results on anomaly detection using real-world data, showcasing F
 ## Prerequisites
 Our code requires Tensor Toolbox (available at https://gitlab.com/tensors/tensor_toolbox).
 
-## Datasets (INCOMPLETE)
-The real-world datasets are available at [ML-100K](https://grouplens.org/datasets/movielens/100k/), [Amazon](https://www.kaggle.com/datasets/deovcs/amazon-dataset), [Stock-US](), [Stock-JPN](), and [Stock-CHN]().
+## Datasets
+The datasets are available at [ML-100K](https://grouplens.org/datasets/movielens/100k/), [Amazon](https://www.kaggle.com/datasets/deovcs/amazon-dataset), [Stock-US](https://drive.google.com/open?id=1w-eSA_BtjSlKu1pKN7RdMS8YmW5JgHGz&usp=drive_copy), [Stock-JPN](https://drive.google.com/open?id=1ZxCckBN7XLt6ZUXaPsz4n-NrR9E55sDB&usp=drive_copy), and [Stock-CHN](https://drive.google.com/open?id=1o5kCQ-0NtgVDfhe-VszdNowKoZ-u8Oz0&usp=drive_copy).
 
 | Dataset      | Stream Type     | Tensor Size               | Matrix Size         |
 |-------------|---------------|--------------------------|---------------------|
