@@ -2,7 +2,7 @@
 % CMTF_MT
 %
 % Calculates a coupled matrix and tensor factorization of a 3rd order tensor
-% (X) and a matrix (Y), which share a temporal factor.
+% X and a matrix Y, which share a temporal factor.
 %
 %   X = [[lambda; A, B, C]]
 %   Y = [[gamma; C, D]]
