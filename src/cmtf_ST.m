@@ -2,7 +2,7 @@
 % CMTF_ST
 %
 % Calculates a coupled matrix and tensor factorization of a 3rd order tensor
-% (X) and a matrix (Y), which share a factor in the 1st mode.
+% X and a matrix Y, which share a factor in the 1st mode.
 %
 %   X = [[lambda; A, B, C]]
 %   Y = [[gamma; A, D]]
