@@ -1,7 +1,7 @@
 # FOCAL
 
 This repository is the official implementation of 
-"Fast and Accurate Online Coupled Matrix-Tensor Factorization via Frequency Regularization" (submitted to KDD 2025).
+"Fast and Accurate Online Coupled Matrix-Tensor Factorization via Frequency Regularization" (submitted to KDD 2026).
 
 ## Abstract
 
