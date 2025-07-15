@@ -19,7 +19,7 @@ The datasets are available at [ML-100K](https://grouplens.org/datasets/movielens
 |-------------|---------------|--------------------------|---------------------|
 | **ML-100K**  | Single-Tensor  | $1682 \times 943 \times 200$   | $1682 \times 19$   |
 | **Amazon**   | Single-Tensor  | $901 \times 1720 \times 200$  | $901 \times 170$   |
-| **Stock-US** | Matrix-Tensor  | $501 \times 88 \times 3651$  | $3651 \times 10$   |
+| **Stock-US** | Matrix-Tensor  | $500 \times 88 \times 3651$  | $3651 \times 10$   |
 | **Stock-JPN** | Matrix-Tensor  | $300 \times 88 \times 3856$       | $3856 \times 10$       |
 | **Stock-CHN**  | Matrix-Tensor  | $1471 \times 88 \times 1170$       | $1170 \times 10$       |
 
