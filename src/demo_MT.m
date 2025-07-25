@@ -23,6 +23,7 @@ TT     = X_dims(end) - tao;
 R      = 10;
 [X, Y] = generate_data(X_dims, Y_dims, R, 20, "MT");
 K_new = 20;
+unfold_N = X_dims(1) * X_dims(2);
 
 %% Initialize factor matrices
 idxX = repmat({':'}, 1, D_X);
@@ -60,17 +61,15 @@ BQ = CTC .* ATA;
 DP = initY' * C;
 DQ = CTC;
 
-%% Frequency regularization
-phi_square = zeros(1, K_new);
-phi_hat = fft(phi_square);
-G = toeplitz([phi_hat(1), phi_hat(end:-1:2)], phi_hat);
-G = real(G);
+%% Initialize frequency filter
+phi_X = zeros(1, K_new);
+phi_Y = zeros(1, K_new);
 
 %% Update
-n_iter = 1; % number of iteration
+n_iter = 10; % number of iteration
 lambda_ = 0.9; % initial forgetting factor for tensor
 mu_ = 0.9; % initial forgetting factor for matrix
-eta_ = 0.5;  % learning rate
+eta_ = 0.05;  % learning rate
 clip = @(x) max(0.5, min(1.0, x));
 average_local_error_x = 0.0;
 average_local_error_y = 0.0;
@@ -95,6 +94,9 @@ for t = 1 : K_new : TT
     idxY(1) = {tao + t:endTime};
     Xnew = squeeze(X(idxX{:}));
     Ynew = squeeze(Y(idxY{:}));
+    unfolded3 = double(tenmat(Xnew, 3));
+    unfolded2 = double(tenmat(Xnew, 2));
+    unfolded1 = double(tenmat(Xnew, 1));
 
     % get accumulated data
     idxX(end) = {1:endTime};
@@ -102,16 +104,30 @@ for t = 1 : K_new : TT
 
     start_time = tic();
 
+    % update frequency filter
+    fx = fft(reshape(single(Xnew), unfold_N, K_new), [], 2);
+    fy = fft(Ynew, [], 1)';
+    phi_X = lambda_ * phi_X + sum(abs(fx), 1)/unfold_N; 
+    phi_Y = mu_ * phi_Y + sum(abs(fy), 1)/Y_dims(2); 
+    phi = exp(-2 * phi_X / norm(phi_X) - 2 * phi_Y / norm(phi_Y));
+    phi_hat = fft(phi);
+    G = toeplitz([phi_hat(1), phi_hat(end:-1:2)], phi_hat);
+    G = real(G); 
+
     %  ALS 
     for iteration = 1 : n_iter
         % Upadte C
-        unfolded = double(tenmat(Xnew, 3));
         kr = khatrirao(B, A);
         ATA = AT * A;
         DTD = DT * D;
         F = BTB .* ATA + DTD;
-        C = sylvester(G, F, unfolded * kr + Ynew * D);
-        CT = C';
+        if (iteration <= 1)
+            C = sylvester(G, F, unfolded3 * kr + Ynew * D);
+            CT = C';
+        else
+            CT = F \ (unfolded3 * kr + Ynew * D)';
+            C = CT';
+        end
     
         % Upadte D
         CTC = CT * C; 
@@ -121,20 +137,18 @@ for t = 1 : K_new : TT
         D = DT';
     
         % Upadte B
-        unfolded = double(tenmat(Xnew, 2));
         kr = khatrirao(C, A);
         F = CTC .* ATA;
-        BP = lambda_ * BP + unfolded * kr;
+        BP = lambda_ * BP + unfolded2 * kr;
         BQ = lambda_ * BQ + F;
         BT = BQ \ BP';
         B = BT';
         
         % Upadte A
-        unfolded = double(tenmat(Xnew, 1));
         kr = khatrirao(C, B);
         BTB = BT * B;
         F = CTC .* BTB;
-        AP = lambda_ * AP + unfolded * kr;
+        AP = lambda_ * AP + unfolded1 * kr;
         AQ = lambda_ * AQ + F;
         AT = AQ \ AP';
         A = AT';
